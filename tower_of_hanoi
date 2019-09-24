@@ -1,0 +1,21 @@
+public class tower_of_hanoi
+{
+    static void move(int disk,String src,String dest,String temp)
+    {
+        if(disk==1)
+        {
+            System.out.println("move "+disk+" from "+src+" to "+dest);
+        }
+        else
+        {
+            move(disk-1,src,temp,dest);
+            System.out.println("move "+disk+" from "+src+" to "+dest);
+            move(disk-1,temp,dest,src);
+        }
+    }
+    public static void main(String args[])
+    {
+        String a="src",b="dest",c="temp";
+        move(5,a,b,c);
+    }
+}
