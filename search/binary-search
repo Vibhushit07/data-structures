@@ -1,0 +1,35 @@
+package search;
+import java.util.*;
+public class binary_search
+{
+    static void search(int a[],int ele,int end,int start)
+    {
+        int mid=(start+end)/2;
+        if(a[mid]==ele)
+        {
+            System.out.println(mid);
+        }
+        else if(a[mid]>ele)
+        {
+            search(a,ele,mid,start);
+        }
+        else
+        {
+            search(a,ele,end,mid+1);
+        }
+    }
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int a[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            a[i]=sc.nextInt();
+        }
+        int ele=sc.nextInt();
+        search(a,ele,n,0);
+
+    }
+}
+
