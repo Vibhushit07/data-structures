@@ -1,0 +1,89 @@
+package queue;
+
+import java.util.*;
+public class queue
+{
+    static Scanner sc=new Scanner(System.in);
+    static int top=-1;
+    static int maxlength=10;
+    static int a[]=new int[maxlength];
+    static boolean overflow()
+    {
+        if(top>maxlength)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    static boolean underflow()
+    {
+        if(top<0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    static void add()
+    {
+        System.out.println("Enter the element to be added");
+        int e=sc.nextInt();
+        top++;
+        a[top]=e;
+    }
+    static void peek()
+    {
+        System.out.println("peek element is "+a[0]);
+    }
+    static void poll()
+    {
+        for(int i=0;i<a.length-1;i++)
+        {
+            a[i]=a[i+1];
+            top--;
+        }
+    }
+    static void display()
+    {
+        for(int i=0;i<top;i++)
+        {
+            System.out.println(a[i]);
+        }
+    }
+    public static void main(String args[])
+    {
+        int choice;
+        do {
+            System.out.println("1.add an element");
+            System.out.println("2.peek an element");
+            System.out.println("3.poll an element");
+            System.out.println("4.display elements");
+            System.out.println("5.end");
+            choice = sc.nextInt();
+            switch (choice)
+            {
+                case 1:
+                    add();
+                    break;
+                case 2:
+                    peek();
+                    break;
+                case 3:
+                    poll();
+                    break;
+                case 4:
+                    display();
+                case 5:
+                    break;
+                default:
+                    System.out.println("Enter valid number");
+            }
+        }while(choice!=5);
+    }
+}
+
