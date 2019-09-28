@@ -11,11 +11,13 @@ public class binary_search
         }
         else if(a[mid]>ele)
         {
-            search(a,ele,mid,start);
+            search(a,ele,mid-1,start); 
+            // it will search element from 0th index to (mid-1)th index
         }
         else
         {
             search(a,ele,end,mid+1);
+            // it will search element from (mid+1)th index to end of array
         }
     }
     public static void main(String args[])
