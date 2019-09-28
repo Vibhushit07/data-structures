@@ -1,0 +1,81 @@
+package queue;
+import java.util.*;
+class q2
+{
+    Scanner sc=new Scanner(System.in);
+    Node f1=null;
+    Node r1=null;
+    class Node
+    {
+        int data;
+        Node next;
+        Node(int data)
+        {
+            this.data=data;
+        }
+    }
+    void simple_queue_insert_ll()
+    {
+        System.out.println("Enter element");
+        int i=sc.nextInt();
+        Node n =new Node(i);
+        n.data=i;
+        if(f1==null)
+        {
+            f1=n;
+            r1=n;
+        }
+        else
+        {
+            Node n1=f1;
+            while(n1.next!=null)
+            {
+                n1=n1.next;
+            }
+            n1.next=n;
+            r1=n;
+        }
+    }
+    void simple_queue_delete_ll()
+    {
+        Node n=f1;
+        f1=n.next;
+    }
+    void simple_queue_print_ll()
+    {
+        Node n=f1;
+        while(n!=null)
+        {
+            System.out.println(n.data);
+            n=n.next;
+        }
+    }
+}
+
+public class simple_ll {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        q2 q = new q2();
+        int s;
+        do {
+            System.out.println("1.simple queue insert using ll");
+            System.out.println("2.simple queue delete using ll");
+            System.out.println("3.simple queue print using ll");
+            System.out.println("4.end");
+            s = sc.nextInt();
+            switch (s) {
+                case 1:
+                    q.simple_queue_insert_ll();
+                    break;
+                case 2:
+                    q.simple_queue_delete_ll();
+                    break;
+                case 3:
+                    q.simple_queue_print_ll();
+                    break;
+                case 4:
+                    break;
+            }
+        }while(s!=4);
+    }
+}
