@@ -5,6 +5,7 @@ public class linear_search
 {
     static void search(int a[],int ele)
     {
+        // enhanced for loop, it will iterate till the last the element in array a
         for(int i:a)
         {
             if(a[i]==ele)
