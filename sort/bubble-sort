@@ -10,13 +10,27 @@ public class bubble_sort
         {
             for(int j=i;j<5;j++)
             {
-                if(a[i]>a[j])
+                if(a[i]>a[j])        
                 {
                     temp=a[i];
                     a[i]=a[j];
                     a[j]=temp;
                 }
             }
+            
+            /*
+                it should be..
+                for(int j = 0; j < 5-i; j++){
+                    if(a[j] > a[j+1]){
+                        temp=a[j];
+                        a[j]=a[j+1];
+                        a[j+1]=temp;
+                    }
+                }
+                because according to the concept of bubble sort
+                if in ascending order..
+                the largest will be come to the end after 1st iteration of outer for loop.
+            */
         }
         for(int i=0;i<5;i++)
         {
