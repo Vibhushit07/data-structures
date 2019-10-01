@@ -17,6 +17,21 @@ public class bubble_sort
                     a[j]=temp;
                 }
             }
+            /*
+                the inner for loop is incorrect
+                for(int j=0;j<5-i;j++)
+                {
+                    if(a[j]>a[j+1])
+                    {
+                        temp=a[j];
+                        a[j]=a[j+1];
+                        a[j+1]=temp;
+                    }
+                }
+                according to bubble sort..
+                if sorting is in ascending order
+                the largest element should come to the end after 1st iteration of outer for loop
+            */
         }
         for(int i=0;i<5;i++)
         {
