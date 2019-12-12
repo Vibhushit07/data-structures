@@ -1,0 +1,101 @@
+package graphs;
+
+    class GraphClosure{
+        int[][] transitiveClosure(int g[][]) {
+            int reach[][]=new int[10][10];
+            reach=g;
+            int V=4;
+            for (int k = 0; k < V; k++)
+            {
+                // Pick all vertices as source one by one
+                for (int i = 0; i < V; i++)
+                {
+                    // Pick all vertices as destination for the
+                    // above picked source
+                    for (int j = 0; j < V; j++)
+                    {
+                        // If vertex k is on a path from i to j,
+                        // then make sure that the value of reach[i][j] is 1
+                        reach[i][j] = (reach[i][j]!=0) ||
+                                ((reach[i][k]!=0) && (reach[k][j]!=0))?1:0;
+                    }
+                }
+                for(int n=0;n<4;n++) {
+                    for(int m=0;m<4;m++) {
+                        System.out.print(reach[n][m]+" ");
+                    }
+                    System.out.println("");
+                }
+                System.out.println("");
+            }
+            for(int i=0;i<4;i++) {
+                for(int j=0;j<4;j++) {
+                    System.out.print(reach[i][j]+" ");
+                }
+                System.out.println("");
+            }
+
+            return reach;
+        }
+        int[][] transitiveClosuree(int g[][]) {
+            int dist[][]=new int[10][10];
+            dist=g;
+            int V=4;
+            for (int k = 0; k < V; k++)
+            {
+                // Pick all vertices as source one by one
+                for (int i = 0; i < V; i++)
+                {
+                    // Pick all vertices as destination for the
+                    // above picked source
+                    for (int j = 0; j < V; j++)
+                    {
+
+                        if (dist[i][k] + dist[k][j] < dist[i][j])
+                            dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+                for(int n=0;n<4;n++) {
+                    for(int m=0;m<4;m++) {
+                        System.out.print(dist[n][m]+" ");
+                    }
+                    System.out.println("");
+                }
+                System.out.println("");
+            }
+            for(int i=0;i<4;i++) {
+                for(int j=0;j<4;j++) {
+                    System.out.print(dist[i][j]+" ");
+                }
+                System.out.println("");
+            }
+
+            return dist;
+        }
+        void print() {
+
+        }
+    }
+
+    public class floydd_warshal {
+
+        public static void main(String[] args) {
+// TODO Auto-generated method stub
+            int graph[][] = new int[][]{ {0,0,1,0},
+                    {1,0,0,1},
+                    {0, 0, 0,0},
+                    {0, 1, 0, 0}
+            };
+
+// Print the solution
+            GraphClosure g = new GraphClosure();
+            graph=g.transitiveClosure(graph);
+            int graph2[][] = new int[][]{ {0, 999,4, 999},
+                    {1,0,6,3},
+                    {999, 999, 0, 999},
+                    {999,5,1, 0}
+            } ;
+            graph2=g.transitiveClosuree(graph2);
+
+    }
+}
