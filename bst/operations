@@ -1,3 +1,5 @@
+package binary_search_tree;
+
 
 public class operations {
     static class Node
@@ -188,6 +190,122 @@ public class operations {
             }
         }
      }
+
+    static int find_lca(int n1,int n2)
+    {
+        return(find_lca1(n1, n2, root));
+    }
+    static int find_lca1(int n1, int n2, Node root)
+    {
+        if(n1>root.data && n2>root.data)
+        {
+            return find_lca1(n1,n2,root.right);
+        }
+        if(n1<root.data && n2<root.data)
+        {
+            return find_lca1(n1,n2,root.left);
+        }
+        return root.data;
+    }
+    static int second_largest()
+    {
+        return second_largest1( root);
+    }
+    static int second_largest1(Node root)
+    {
+        int secondMax;
+        Node pre = root;
+        Node cur = root;
+        while (cur.right != null)
+        {
+            pre = cur;
+            cur = cur.right;
+        }
+        if (cur.left != null)
+        {
+            cur = cur.left;
+            while (cur.right != null)
+                cur = cur.right;
+            secondMax = cur.data;
+        }
+        else
+        {
+            secondMax = pre.data;
+        }
+        return secondMax;
+    }
+    static int distance_from_root(Node root, int x)
+    {
+        if(root.data==x)
+            return 0;
+        else if(root.data>x)
+            return 1+distance_from_root(root.left,x);
+        return 1+distance_from_root(root.right,x);
+    }
+    static int shortest_distance(int a,int b)
+    {
+        return shortest_distance1(root,a,b);
+    }
+    static int shortest_distance1(Node root, int a, int b)
+    {
+        if(root==null)
+            return 0;
+        if(a>root.data && b>root.data)
+        {
+            return shortest_distance1(root.right,a,b);
+        }
+        if(a<root.data && b<root.data)
+        {
+            return shortest_distance1(root.left,a,b);
+        }
+        if(a>=root.data && b<=root.data || a<=root.data && b>=root.data) {
+            return (distance_from_root(root, a) + distance_from_root(root, b));
+        }
+        return 0;
+    }
+    static int height(Node root)
+    {
+        if(root==null)
+            return 0;
+        int lh=height(root.left);
+        int rh=height(root.right);
+        if(lh>rh)
+            return lh+1;
+        else
+            return rh+1;
+    }
+    static void level_order()
+    {
+        int h=height(root);
+        for(int i=1;i<=h;i++)
+        {
+            level_order_traversal(root,i);
+        }
+    }
+    static void level_order_traversal(Node root, int level)
+    {
+        if(root==null)
+            return;
+        else if(level==1)
+            System.out.println(root.data);
+        else  {
+            level_order_traversal(root.left, level - 1);
+            level_order_traversal(root.right, level - 1);
+        }
+    }
+    static void print_leaf(prac_bst.Node root)
+    {
+        if(root==null)
+            return;
+        if(root.left==null && root.right==null){
+            System.out.println(root.data);
+            return;}
+        if(root.left!=null )
+            print_leaf(root.left);
+        if(root.right!=null )
+            print_leaf(root.right);
+    }
+ //   static void level_order()
     public static void main(String args[])
     {
         insert(6);
@@ -204,9 +322,12 @@ public class operations {
         parent(7);
         sibling(8);
         int l = getleaf();
+        int a=second_largest();
+        int b=shortest_distance(2,3);
         System.out.println("leaf count : "+l);
         int h1= height();
         System.out.println("height : "+h1);
+        System.out.println("lllll");
+     //   level_order();
     }
 }
-
