@@ -36,10 +36,13 @@ class q2
             r1=n;
         }
     }
+    
+    // deletes the first element of queue
     void simple_queue_delete_ll()
     {
-        Node n=f1;
-        f1=n.next;
+        // Node n=f1;
+        // f1=n.next;
+        f1 = f1.next;
     }
     void simple_queue_print_ll()
     {
